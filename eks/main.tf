@@ -5,8 +5,8 @@ module "eks" {
 
   k8s_version = var.k8s_version
 
-  ssm_private_subnets = var.ssm_private_subnets
-  ssm_pod_subnets     = var.ssm_pod_subnets
+  ssm_private_subnets = data.aws_ssm_parameter.private_subnets[*].value
+  ssm_pod_subnets     = data.aws_ssm_parameter.pod_subnets[*].value
 
   auto_scale_options   = var.auto_scale_options
   nodes_instance_sizes = var.nodes_instance_sizes
