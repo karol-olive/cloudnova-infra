@@ -1,21 +1,16 @@
 formatter: "markdown table" # this is required
 version: ">= 0.18.0"
 recursive:
-  enabled: false
-  path: ""
+  enabled: true
+  path: "eks"
 sections:
   hide: []
   show: []
 
 content: |-
-  ## Terraform Module cn-eks
-  Module responsible for EKS CloudNova Project
+  ## CloudNova Infra
+  Repo responsable for managment the infra
 
-  ## For local test run
-  ``` 
-  terraform init --backend=false && terraform test
-  ``` 
-  
   {{ .Header }}
   
   {{ .Requirements }}
