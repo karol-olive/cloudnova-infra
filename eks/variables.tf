@@ -15,6 +15,13 @@ variable "k8s_version" {
   description = "The kubernetes version"
 }
 
+## EKS - ADDON
+variable "addon_cni_version" {
+  type        = string
+  default     = ""
+  description = "AddOn CNI version"
+}
+
 
 ## EKS - NETWORKING
 variable "ssm_private_subnets" {

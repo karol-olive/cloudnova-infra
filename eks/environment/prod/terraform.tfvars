@@ -6,6 +6,9 @@ region       = "eu-west-1"
 ## EKS - GENERAL
 k8s_version = "1.32"
 
+## EKS - ADDON
+addon_cni_version = "v1.19.5-eksbuild.3"
+
 ## EKS - NETWORKING
 ssm_private_subnets = [
   "/cloudnova/subnets/private/eu-west-1a/cn-private-1a",
