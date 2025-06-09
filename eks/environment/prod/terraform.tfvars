@@ -33,3 +33,15 @@ nodes_instance_sizes = [
   "t3.large",
   "t3a.large"
 ]
+
+## KARPENTER_CAPACITY
+karpenter_capacity = [{
+  name               = "cloudnova-capacity"
+  workload           = "cloudnova-workload"
+  ami_family         = "AL2023"
+  ami_ssm            = "aws/service/eks/optimized-ami/1.32/amazon_linux-2023/x86_64/standard/recommended/image_id"
+  instance_family    = ["t3", "t3a"]
+  instance_sizes     = ["large", "medium"]
+  capacity_type      = ["on_demand"]
+  availability_zones = ["eu-west-1a", "eu-west-1b", "eu-west-1c"]
+}]

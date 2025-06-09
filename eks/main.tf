@@ -1,5 +1,5 @@
 module "eks" {
-  source = "git::https://github.com/karol-olive/cn-eks.git?ref=1c3bc0c7bb0d6f41422d352334cf4b9ae3930b56" #v1.2.0
+  source = "git::https://github.com/karol-olive/cn-eks.git?ref=7b2ca68b2ce654ed42afab2e100fc62c9d548d97" #v1.3.0
 
   project_name = var.project_name
 
@@ -11,4 +11,6 @@ module "eks" {
 
   auto_scale_options   = var.auto_scale_options
   nodes_instance_sizes = var.nodes_instance_sizes
+
+  karpenter_capacity = var.karpenter_capacity
 }
