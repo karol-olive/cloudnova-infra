@@ -1,5 +1,5 @@
 module "networking" {
-  source = "git::https://github.com/karol-olive/cn-networking.git?ref=v1.0.2"
+  source = "git::https://github.com/karol-olive/cn-networking.git?ref=295ba6da44babe16c4373857f0b0f0423091a5e6" #v1.0.2
 
   project_name = var.project_name
 
