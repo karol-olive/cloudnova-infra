@@ -46,7 +46,7 @@ jobs:
     if: ${{ needs.paths.outputs.full_paths != '[]'}}
     strategy:
       matrix:
-        environment: ${{ fromJson(needs.paths.outputs.base_paths) }}
+        path: ${{ fromJson(needs.paths.outputs.base_paths) }}
     defaults:
       run:
         shell: bash
@@ -63,7 +63,7 @@ jobs:
     if: ${{ needs.paths.outputs.full_paths != '[]'}}
     strategy:
       matrix:
-        environment: ${{ fromJson(needs.paths.outputs.base_paths) }}
+        path: ${{ fromJson(needs.paths.outputs.base_paths) }}
     defaults:
       run:
         shell: bash
@@ -92,7 +92,7 @@ jobs:
     if: ${{ needs.paths.outputs.full_paths != '[]'}}
     strategy:
       matrix:
-        environment: ${{ fromJson(needs.paths.outputs.base_paths) }}
+        path: ${{ fromJson(needs.paths.outputs.base_paths) }}
     defaults:
       run:
         shell: bash
@@ -137,7 +137,7 @@ jobs:
     if: ${{ needs.paths.outputs.full_paths != '[]'}}
     strategy:
       matrix:
-        environment: ${{ fromJson(needs.paths.outputs.base_paths) }}
+        path: ${{ fromJson(needs.paths.outputs.base_paths) }}
     defaults:
       run:
         shell: bash
