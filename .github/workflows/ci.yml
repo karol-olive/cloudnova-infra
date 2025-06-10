@@ -100,12 +100,9 @@ jobs:
         working-directory: '${{ matrix.path }}'
     runs-on: ubuntu-latest
     steps:
-
-      # Checkout Repository
       - name: Check out Git Repository
         uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4
 
-      # TFLint - Terraform Check
       - uses: actions/cache@5a3ec84eff668545956fd18022155c47e93e2684 # v4.2.3
         name: Cache plugin dir
         with:
@@ -117,11 +114,9 @@ jobs:
         with:
           tflint_version: v0.52.0
 
-      # Print TFLint version
       - name: Show version
         run: tflint --version
 
-      # Install plugins
       - name: Init TFLint
         run: tflint --init
         env:
