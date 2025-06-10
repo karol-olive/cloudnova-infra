@@ -7,4 +7,4 @@ This is the central repository used to provision the fictional CloudNova project
 
 # Networking Designer
 
-![CN-Networking](https://github.com/user-attachments/assets/bb76b2f6-de1c-4ba3-810e-0aeb2e91cb28)
+![Networking](https://github.com/user-attachments/assets/01ed8d4e-1528-4a28-a9ef-54152020f981)
