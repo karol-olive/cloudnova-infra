@@ -43,9 +43,9 @@ karpenter_capacity = [
     workload           = "critical-workload"
     ami_family         = "AL2023"
     ami_ssm            = "/aws/service/eks/optimized-ami/1.32/amazon-linux-2023/x86_64/standard/recommended/image_id"
-    instance_family    = ["t3"]
-    instance_sizes     = ["large"]
-    capacity_type      = ["on_demand"]
+    instance_family    = ["t3", "t2"]
+    instance_sizes     = ["large", "medium"]
+    capacity_type      = ["on-demand"]
     availability_zones = ["eu-west-1a", "eu-west-1b", "eu-west-1c"]
   },
   {
@@ -53,9 +53,9 @@ karpenter_capacity = [
     workload           = "chip-workload"
     ami_family         = "AL2023"
     ami_ssm            = "/aws/service/eks/optimized-ami/1.32/amazon-linux-2023/x86_64/standard/recommended/image_id"
-    instance_family    = ["t3", "t3a"]
-    instance_sizes     = ["medium"]
-    capacity_type      = ["on_demand"]
+    instance_family    = ["t3", "t2"]
+    instance_sizes     = ["medium", "large"]
+    capacity_type      = ["on-demand"]
     availability_zones = ["eu-west-1a", "eu-west-1b", "eu-west-1c"]
   }
 ]
