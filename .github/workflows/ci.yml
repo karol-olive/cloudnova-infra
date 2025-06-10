@@ -19,7 +19,6 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       full_paths: ${{ steps.filter.outputs.changes }}
-      base_paths: ${{ steps.get-base-paths.outputs.paths }}
     steps:
       - name: Checkout
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
@@ -33,12 +32,14 @@ jobs:
       - name: Check Changes
         if: steps.filter.outputs.changes == '[]'
         run: echo '::notice::No changes were detected in the tracked folders, skiping terraform CI job'
-      
-      - name: Get Base Paths
+
+      - name: Set Paths to be Global
         if: steps.filter.outputs.changes != '[]'
         id: get-base-paths
         run: |
-          paths=$(echo '${{ steps.filter.outputs.changes }}' | jq -r '.[] | split("/")[0]' | sort -u | jq -R -s -c 'split("\n")[:-1]')
+          echo ${{ steps.filter.outputs.changes }}
+          paths=$(echo '${{ steps.filter.outputs.changes }}' | jq -r '.[]' | sort -u | jq -R -s -c 'split("\n")[:-1]')
+          echo $paths
           echo "paths=$paths" >> $GITHUB_OUTPUT
 
   commitlint:
@@ -46,7 +47,7 @@ jobs:
     if: ${{ needs.paths.outputs.full_paths != '[]'}}
     strategy:
       matrix:
-        path: ${{ fromJson(needs.paths.outputs.base_paths) }}
+        path: ${{ fromJson(needs.paths.outputs.full_paths) }}
     defaults:
       run:
         shell: bash
@@ -59,11 +60,11 @@ jobs:
 
   checkov:
     name: "Checkov"
-    needs: commitlint
+    needs: [commitlint, paths]
     if: ${{ needs.paths.outputs.full_paths != '[]'}}
     strategy:
       matrix:
-        path: ${{ fromJson(needs.paths.outputs.base_paths) }}
+        path: ${{ fromJson(needs.paths.outputs.full_paths) }}
     defaults:
       run:
         shell: bash
@@ -88,11 +89,11 @@ jobs:
 
   tflint-checks:
     name: "TF Lint"
-    needs: commitlint
+    needs: [commitlint, paths]
     if: ${{ needs.paths.outputs.full_paths != '[]'}}
     strategy:
       matrix:
-        path: ${{ fromJson(needs.paths.outputs.base_paths) }}
+        path: ${{ fromJson(needs.paths.outputs.full_paths) }}
     defaults:
       run:
         shell: bash
@@ -133,11 +134,11 @@ jobs:
   terraform-validation:
     name: "Terraform Validation"
     runs-on: ubuntu-latest
-    needs: commitlint
+    needs: [commitlint, paths]
     if: ${{ needs.paths.outputs.full_paths != '[]'}}
     strategy:
       matrix:
-        path: ${{ fromJson(needs.paths.outputs.base_paths) }}
+        path: ${{ fromJson(needs.paths.outputs.full_paths) }}
     defaults:
       run:
         shell: bash
