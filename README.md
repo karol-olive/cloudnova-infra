@@ -1,18 +1,6 @@
-# cloudnova-infra
-<!-- BEGIN_TF_DOCS -->
-## CloudNova Infra
-Repo responsable for managment the infra
+# CloudNova Infra
 
+This is the central repository used to provision the fictional CloudNova project. The module used are:
 
-
-
-
-
-
-
-
-
-
-
-  
-<!-- END_TF_DOCS -->
+ - [Networking Module](https://github.com/karol-olive/cn-networking)
+ - [EKS with Karpenter and Node Groups](https://github.com/karol-olive/cn-eks)
