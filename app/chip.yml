@@ -11,7 +11,7 @@ metadata:
   name: chip
   namespace: chip
 spec:
-  replicas: 100
+  replicas: 3
   selector:
     matchLabels:
       app: chip
@@ -48,7 +48,7 @@ spec:
             matchLabels:
               app: chip
 
-      # NodeS Selector to NodePool specific
+      # # NodeS Selector to NodePool specific
       nodeSelector:
         karpenter.sh/nodepool: cloudnova-chip
 
