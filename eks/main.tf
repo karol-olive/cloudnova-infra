@@ -1,5 +1,5 @@
 module "eks" {
-  source = "git::https://github.com/karol-olive/cn-eks.git?ref=6c3eae94266ceb133ebf40c9749fe6ac44e70e05" #v1.5.4
+  source = "git::https://github.com/karol-olive/cn-eks.git?ref=6b4da84a945dcb9827b79b26f6ce32dc46b20832" #v1.6.0
 
   project_name = var.project_name
 
