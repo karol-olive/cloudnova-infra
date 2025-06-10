@@ -1,0 +1,6 @@
+networking:
+  - networking/**
+eks:
+  - eks/**
+eks-helm:
+  - eks-helm/**
