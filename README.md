@@ -61,3 +61,11 @@ Rollout is a very powerful tool in the ArgoCD stack that allows us to deploy our
 The key word when we talk about the Canary strategy is **gradually**, which means that we will have two versions of our application deployed, but only a percentage of the requests will be redirected to the new one. The Rollout tool allows us to define this promotion by time or after some metrics are available, approving manually or automatically.
 
 However, when we talk about the Blue/Green strategy, we will have a new version, the green one, in our environment and a new service, but all the traffic remains on the blue (stable) version until all the tests, on the new green version, are completed. We can use smoke tests, warmups and so on, the Rollout tool allows us to create these scenarios too. The main difference here is that, once the green version is tested, we promote all the requests to it and keep the blue (old) version for a while, in case we need any rollback.
+
+# Observability (to be implemented)
+
+Grafana and Prometheus is the most famous "couple" when we talk about observability in the kubernetes world. There is a helm chart mantain by the prometheus team called [kube-prometheus-stack](https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack). It is responsable to deploy the main componentes describe on the draw below:
+
+![kube-prometheus-stack](https://github.com/user-attachments/assets/bd72a18a-70a7-40d8-bda7-3f40c7ffcc6f)
+
+
