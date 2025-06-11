@@ -25,10 +25,10 @@ variable "addon_cni_version" {
 
 ## EKS - NETWORKING
 
-# variable "ssm_vpc" {
-#   type        = string
-#   description = "VPC ssm parameter id"
-# }
+variable "ssm_vpc" {
+  type        = string
+  description = "VPC ssm parameter id"
+}
 
 variable "ssm_private_subnets" {
   type        = list(string)

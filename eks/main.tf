@@ -6,6 +6,7 @@ module "eks" {
   k8s_version       = var.k8s_version
   addon_cni_version = var.addon_cni_version
 
+  ssm_vpc             = data.aws_ssm_parameter.vpc.value
   ssm_private_subnets = data.aws_ssm_parameter.private_subnets[*].value
   ssm_pod_subnets     = data.aws_ssm_parameter.pod_subnets[*].value
 

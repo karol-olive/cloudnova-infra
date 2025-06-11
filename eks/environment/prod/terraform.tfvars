@@ -10,7 +10,7 @@ k8s_version = "1.32"
 addon_cni_version = "v1.19.5-eksbuild.3"
 
 ## EKS - NETWORKING
-# ssm_vpc = "/cloudnova/vpc/id"
+ssm_vpc = "/cloudnova/vpc/id"
 
 ssm_private_subnets = [
   "/cloudnova/subnets/private/eu-west-1a/cn-private-1a",
