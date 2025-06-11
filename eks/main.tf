@@ -2,6 +2,7 @@ module "eks" {
   source = "git::https://github.com/karol-olive/cn-eks.git?ref=d43595f29e6007e9c8f49c882df4c76ccf651c7a" #v1.7.0
 
   project_name = var.project_name
+  region       = var.region
 
   k8s_version       = var.k8s_version
   addon_cni_version = var.addon_cni_version

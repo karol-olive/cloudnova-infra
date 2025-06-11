@@ -22,9 +22,7 @@ variable "addon_cni_version" {
   description = "AddOn CNI version"
 }
 
-
 ## EKS - NETWORKING
-
 variable "ssm_vpc" {
   type        = string
   description = "VPC ssm parameter id"
