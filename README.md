@@ -13,7 +13,7 @@ This project use these tecnologys:
  - Karpenter to handle with auto scale
  - ALB (AWS LoadBalancer ) to expos the application out of the cluster.
 
-# Before to Deploy
+# Before Deploy
 Before deploying the infrastructure, you need to have an AWS access key for Terraform. Go to your AWS IAM console->User->Create User. Keep in mind that this user should not have access to the console, they need to have administrator access, so they can create all resources. However, this key is very important, so keep it in a safe place and implement key rotation.
 
 With these values ​​in hand, go to the repository settings, Secrets and Variables->Actions->Repository Secrets and create the following secrets:
