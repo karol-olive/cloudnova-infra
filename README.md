@@ -64,7 +64,7 @@ However, when we talk about the Blue/Green strategy, we will have a new version,
 
 # Observability (to be implemented)
 
-Grafana and Prometheus is the most famous "couple" when we talk about observability in the kubernetes world. There is a helm chart mantain by the prometheus team called [kube-prometheus-stack](https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack). It is responsable to deploy the main componentes describe on the draw below:
+Grafana and Prometheus is the most famous "couple" when we talk about observability in the kubernetes world. There is a helm chart maintain by the prometheus team called [kube-prometheus-stack](https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack). It is responsible to deploy the main components describe on the draw below:
 
 ![kube-prometheus-stack](https://github.com/user-attachments/assets/bd72a18a-70a7-40d8-bda7-3f40c7ffcc6f)
 
