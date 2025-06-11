@@ -31,9 +31,18 @@ After creating the secrets, simply access the [GitHub Actions pipeline](https://
 
 I will explain each of them in the sections below.
 
-# Networking: Designer
+# Networking
 
+## Designer
 The networking was designer thinking on scalabiltiy and resilience, each main resource such as NAT Gateway and ALB will be deployed in multi-zones, if one region goes down the application not be affected toltally. Also there is a dedicate range ip to the pod's, keep them segregate to the range to the other networking resources.
 
 ![Networking](https://github.com/user-attachments/assets/01ed8d4e-1528-4a28-a9ef-54152020f981)
+
+
+## Security
+The subnets was segregated by public, private, pods and databases. The database one for example can just recive request from the private subnet in a specific port, for that I use the NACL;s, just for give a example you can consult [here](https://github.com/karol-olive/cloudnova-infra/blob/main/networking/environment/prod/terraform.tfvars#L84). Keep in mind that can be update or create to other ports as well, the terraform is prepared to hande with that.
+
+# EKS
+
+The EKS module deploys the EKS resource with Node Group and Karpenter, also an ALB. You can deploy as many nodepools as you need, just by incrementing the block [here](https://github.com/karol-olive/cloudnova-infra/blob/main/eks/environment/prod/terraform.tfvars#L39). With this strategy, is creating high availability and resilience for the application. Keep in mind that the application also needs to reflect those changes. To validate the scenario, there is this application call chip, which already configures some options for different nodepools and exposes it to the internet through ALB resources. You can see it [here](https://github.com/karol-olive/cloudnova-infra/blob/main/app/chip.yml).
 
