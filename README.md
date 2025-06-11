@@ -14,26 +14,26 @@ This project use these tecnologys:
  - ALB (AWS LoadBalancer ) to expos the application out of the cluster.
 
 # Before to Deploy
-Before deploy the infrascture is necessary to have an aws key access for terraform. Go in your console AWS IAM->User->Create User, keep in mind that this user shoudn't have access to the console. This user need to have admin access, so will be able to create all resources, saying that, this key is very important, so keep in a save place and implement a key rotation. 
+Before deploying the infrastructure, you need to have an AWS access key for Terraform. Go to your AWS IAM console->User->Create User. Keep in mind that this user should not have access to the console, they need to have administrator access, so they can create all resources. However, this key is very important, so keep it in a safe place and implement key rotation.
 
-With this values in your hand, go to repository settings, Secrets and variables->Actions->Repository secrets and create the flowing:
+With these values ​​in hand, go to the repository settings, Secrets and Variables->Actions->Repository Secrets and create the following secrets:
 
  - AWS_ACCESS_KEY_ID 
  - AWS_SECRET_ACCESS_KEY
  - GH_TOKEN -> Here is to keep this repository private is necessary create your PAT (Personal Access Token)
 
 # How to Deploy
-Once the secrets is created, just go to the [GitHub Action pipeline](https://github.com/karol-olive/cloudnova-infra/actions/workflows/cd.yml), and trigger manually. This repo have 3 main folders, and must be deployed in this order:
+After creating the secrets, simply access the [GitHub Actions pipeline](https://github.com/karol-olive/cloudnova-infra/actions/workflows/cd.yml) and trigger them manually. This repository has 3 main folders and should be deployed in this order:
 
- - networking 
- - eks
- - eks-helm
+- networking
+- eks
+- eks-helm
 
-I will explain each one on the section below.
+I will explain each of them in the sections below.
 
 # Networking: Designer
 
-The networking was designer thinking on scalabiltiy and resilience, each main resource such as NAT Gateway and ALB will always be deployed in multi-zones, if one region goes down the application not be affected toltally. 
+The networking was designer thinking on scalabiltiy and resilience, each main resource such as NAT Gateway and ALB will be deployed in multi-zones, if one region goes down the application not be affected toltally. Also there is a dedicate range ip to the pod's, keep them segregate to the range to the other networking resources.
 
 ![Networking](https://github.com/user-attachments/assets/01ed8d4e-1528-4a28-a9ef-54152020f981)
 
