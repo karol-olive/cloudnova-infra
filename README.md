@@ -15,8 +15,8 @@ This project use these tecnologys:
 
 # Before Deploy
 Before deploying the infrastructure, you need to have an AWS access key for Terraform. Go to your AWS IAM console->User->Create User. Keep in mind that this user should not have access to the console, they need to have administrator access, so they can create all resources. However, this key is very important, so keep it in a safe place and implement key rotation.
-
 With these values ​​in hand, go to the repository settings, Secrets and Variables->Actions->Repository Secrets and create the following secrets:
+
 
  - AWS_ACCESS_KEY_ID 
  - AWS_SECRET_ACCESS_KEY
@@ -34,7 +34,7 @@ I will explain each of them in the sections below.
 # Networking
 
 ## Designer
-The networking was designer thinking on scalabiltiy and resilience, each main resource such as NAT Gateway and ALB will be deployed in multi-zones, if one region goes down the application not be affected toltally. Also there is a dedicate range ip to the pod's, keep them segregate to the range to the other networking resources.
+The networking was designer thinking on scalability and resilience, each main resource such as NAT Gateway and ALB will be deployed in multi-zones, if one region goes down the application not be affected totally. Also there is a dedicate range ip to the pod's, keep them segregate to the range to the other networking resources.
 
 ![Networking](https://github.com/user-attachments/assets/01ed8d4e-1528-4a28-a9ef-54152020f981)
 
