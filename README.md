@@ -23,7 +23,7 @@ With these values ​​in hand, go to the repository settings, Secrets and Vari
  - GH_TOKEN -> Here is to keep this repository private is necessary create your PAT (Personal Access Token)
 
 # How to Deploy
-After creating the secrets, simply access the [GitHub Actions pipeline](https://github.com/karol-olive/cloudnova-infra/actions/workflows/cd.yml) and trigger them manually. This repository has 3 main folders and should be deployed in this order:
+After creating the secrets, simply access the [GitHub Actions pipeline](https://github.com/karol-olive/cloudnova-infra/actions/workflows/cd.yml) and trigger them manually. This repository has 3 main folders each one has your own terraform state and should be deployed in this order:
 
 - networking
 - eks
@@ -44,5 +44,12 @@ The subnets was segregated by public, private, pods and databases. The database 
 
 # EKS
 
+## Designer
 The EKS module deploys the EKS resource with Node Group and Karpenter, also an ALB. You can deploy as many nodepools as you need, just by incrementing the block [here](https://github.com/karol-olive/cloudnova-infra/blob/main/eks/environment/prod/terraform.tfvars#L39). With this strategy, is creating high availability and resilience for the application. Keep in mind that the application also needs to reflect those changes. To validate the scenario, there is this application call chip, which already configures some options for different nodepools and exposes it to the internet through ALB resources. You can see it [here](https://github.com/karol-olive/cloudnova-infra/blob/main/app/chip.yml).
 
+## Security
+To deploy resources within EKS, create a role for each service and use the least privilege strategy. For each resource, there is an iam_<service>.tf that contains the required permission. Keep in mind that for new resources, you need to create the corresponding iam. You can find it [here](https://github.com/karol-olive/cn-eks)
+
+# EKS-Helm
+
+This folder contains any extra helm needed to manage or get metrics from the cluster, this way the resources that have most changes and/or continue improvement has a Terraform state segregated from the main infrastructure, keeping management simple and avoiding read long terrafrom plan or deleting any important resource ;).
