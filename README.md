@@ -40,7 +40,7 @@ The networking was designer thinking on scalability and resilience, each main re
 
 
 ## Security
-The subnets was segregated by public, private, pods and databases. The database one for example can just recive request from the private subnet in a specific port, for that I use the NACL;s, just for give a example you can consult [here](https://github.com/karol-olive/cloudnova-infra/blob/main/networking/environment/prod/terraform.tfvars#L84). Keep in mind that can be update or create to other ports as well, the terraform is prepared to hande with that.
+The subnets was segregated by public, private, pods and databases. The database one for example can just received request from the private subnet in a specific port, for that I use the NACL;s, just for give a example you can consult [here](https://github.com/karol-olive/cloudnova-infra/blob/main/networking/environment/prod/terraform.tfvars#L84). Keep in mind that can be update or create to other ports as well, the terraform is prepared to handle with that.
 
 # EKS
 
