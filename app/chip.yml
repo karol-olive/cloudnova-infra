@@ -115,6 +115,7 @@ spec:
   - name: web
     port: 8080
     protocol: TCP
+    targetPort: 8080
   selector:
     app: chip
-  type: ClusterIP
+  type: LoadBalancer
