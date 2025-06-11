@@ -53,3 +53,11 @@ To deploy resources within EKS, create a role for each service and use the least
 # EKS-Helm
 
 This folder contains any extra helm needed to manage or get metrics from the cluster, this way the resources that have most changes and/or continue improvement has a Terraform state segregated from the main infrastructure, keeping management simple and avoiding read long terrafrom plan or deleting any important resource ;).
+
+# Deployments (to be implemented)
+
+Rollout is a very powerful tool in the ArgoCD stack that allows us to deploy our application with different strategies, such as Canary and Blue/Green.
+
+The key word when we talk about the Canary strategy is **gradually**, which means that we will have two versions of our application deployed, but only a percentage of the requests will be redirected to the new one. The Rollout tool allows us to define this promotion by time or after some metrics are available, approving manually or automatically.
+
+However, when we talk about the Blue/Green strategy, we will have a new version, the green one, in our environment and a new service, but all the traffic remains on the blue (stable) version until all the tests, on the new green version, are completed. We can use smoke tests, warmups and so on, the Rollout tool allows us to create these scenarios too. The main difference here is that, once the green version is tested, we promote all the requests to it and keep the blue (old) version for a while, in case we need any rollback.
